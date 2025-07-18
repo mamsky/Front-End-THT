@@ -23,7 +23,10 @@ const ArticlePage = () => {
         >
           {isLoading || isFetching ? <SkeletonArticle /> : false}
           {data?.length == 0 ? (
-            <p className="text-center text-gray-500 italic mt-6">
+            <p
+              id="article_not_found"
+              className="text-center text-gray-500 italic mt-6"
+            >
               - No Articles Available -
             </p>
           ) : (

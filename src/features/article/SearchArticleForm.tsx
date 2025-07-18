@@ -9,6 +9,7 @@ const SearchArticleForm = ({ onSearch, isFetching }: props) => {
     <div className="relative">
       <input
         type="text"
+        id="search"
         placeholder="Search article...."
         onChange={(e) => onSearch(e.target.value)}
         className="p-2 rounded-md w-full border bg-white/50 focus:bg-white/10 shadow-2xl"
