@@ -18,9 +18,7 @@ export class ArticleDataSource {
             toast("Unauthorized request");
             break;
           case 429:
-            toast(
-              "Too many requests: You reached your per minute or per day rate limit."
-            );
+            toast("Too many requests: please wait 1 minutes");
             break;
           default:
             console.error("An error occurred: ", error.message);
