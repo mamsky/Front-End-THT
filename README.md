@@ -22,14 +22,68 @@ cd Front-End-THT
 npm install
 ```
 
-## Running Tests
+# Search Input Validation Testing
 
-To run tests, run the following command
+This document describes a testing approach for validating search input and handling invalid or no-result keywords in a Frontend Engineer Technical Test project.
+
+---
+
+## Overview
+
+The testing covers the following cases:
+
+- The page loads with the correct title.
+- Article data is displayed correctly with the expected fields: headline, byline, publication date, abstract, and link.
+- Search results are displayed correctly when searching for valid keywords (e.g., "Trump").
+- Invalid search keywords trigger a user-friendly "No Articles Available" message.
+
+---
+
+## Automated Testing Details
+
+The testing uses the Playwright framework and includes:
+
+### 1. Page Title Testing
+
+Verifies that the page title contains "THT Paste Prosmana" when the application loads.
+
+### 2. Article Display Test
+
+Checks that each article on the page displays:
+
+- Title (truncated to 100 characters)
+- Author name (or "By Anonymous" if empty, truncated to 40 characters)
+- Publication date (formatted)
+- Abstract (truncated to 160 characters, with ellipsis)
+- Link to the full article
+
+Using a mock article dataset (`mockArticle`) for verification.
+
+### 3. Valid Keyword Search Test
+
+Searches for the keyword `"trump"` and verifies that the displayed article matches the expectations of the mock data (same columns as above).
+
+### 4. Invalid Keyword Search Test
+
+Tests for multiple invalid or missing keywords (from the `keywordNotFound` array) by:
+
+- Populating the search input with each invalid keyword.
+- Verifying that the element with the ID `#article_not_found` is visible.
+- Confirmation will display the message `- No Articles Available -`.
+
+---
+
+## Running the Test
+
+Make sure your development server is running locally at:
+http://localhost:5173/
+
+Run the Playwright test with:
 
 ```bash
-  npm run test
-  &
-  npm run test-ui
+npm run test // terminal
+&
+npm run test-ui // display the ui
 ```
 
 ## Demo
