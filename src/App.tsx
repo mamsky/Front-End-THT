@@ -1,9 +1,7 @@
+import ArticlePage from "./features/UI/pages/ArticlePage";
+
 function App() {
-  return (
-    <>
-      <h1>He</h1>
-    </>
-  );
+  return <ArticlePage />;
 }
 
 export default App;
