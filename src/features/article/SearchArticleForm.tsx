@@ -1,14 +1,15 @@
-import { Delay } from "@/utils/delay";
 import SearchIcon from "../../assets/images/transparency.png";
 
-const SearchArticleForm = () => {
-  const { debounced } = Delay();
+interface props {
+  onSearch: (value: string) => void;
+}
+const SearchArticleForm = ({ onSearch }: props) => {
   return (
     <div className="relative">
       <input
         type="text"
         placeholder="Search article...."
-        onChange={(e) => debounced(e.target.value)}
+        onChange={(e) => onSearch(e.target.value)}
         className="p-2 rounded-md w-full border bg-white/50 focus:bg-white/10 shadow-2xl"
       />
       <img

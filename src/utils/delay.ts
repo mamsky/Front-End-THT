@@ -6,5 +6,6 @@ export const Delay = () => {
   const debounced = useDebouncedCallback((value) => {
     setValue(value);
   }, 500);
+
   return { value, debounced };
 };
