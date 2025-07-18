@@ -16,10 +16,12 @@ deployment with: https://vercel.com/
 
 ## Installation
 
-````bash
+```bash
 git clone https://github.com/mamsky/Front-End-THT
 cd Front-End-THT
 npm install
+```
+
 ## Running Tests
 
 To run tests, run the following command
@@ -28,7 +30,7 @@ To run tests, run the following command
   npm run test
   &
   npm run test-ui
-````
+```
 
 ## Demo
 
