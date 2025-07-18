@@ -5,16 +5,15 @@ import { expect, test } from "@playwright/test";
 import { mockArticle } from "./mock/mockArticle";
 
 test("has title", async ({ page }) => {
-  await page.goto("http://localhost:5174/");
+  await page.goto("http://localhost:5173/");
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/THT Paste Prosmana/);
 });
 
 test("Displays data related to the article", async ({ page }) => {
-  await page.goto("http://localhost:5174/");
+  await page.goto("http://localhost:5173/");
 
   const articleElements = page.locator("#article");
-  await articleElements.first().waitFor();
 
   for (let i = 0; i < mockArticle.length; i++) {
     const article = mockArticle[i];
@@ -43,7 +42,7 @@ test("Displays data related to the article", async ({ page }) => {
 });
 
 test("search results for articles about 'Trump' ", async ({ page }) => {
-  await page.goto("http://localhost:5174/");
+  await page.goto("http://localhost:5173/");
 
   const articleElements = page.locator("#article");
   await articleElements.first().waitFor();
@@ -78,7 +77,7 @@ test("search results for articles about 'Trump' ", async ({ page }) => {
 });
 
 test("The keyword for the article search is invalid.", async ({ page }) => {
-  await page.goto("http://localhost:5174/");
+  await page.goto("http://localhost:5173/");
 
   for (let i = 0; i < keywordNotFound.length; i++) {
     const keyword = keywordNotFound[i];
