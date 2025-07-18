@@ -18,15 +18,19 @@ const ArticlePage = () => {
         </section>
         <article
           className={`flex flex-col gap-5 p-2 w-full min-h-[90%] max-h-[95%] ${
-            isScroll ? "" : "overflow-y-scroll"
+            isScroll ? "overflow-y-scroll" : ""
           }`}
         >
           {isLoading || isFetching ? <SkeletonArticle /> : false}
-          {data?.length == 0
-            ? "Data Article Available"
-            : data?.map((field) => (
-                <ListArticle key={field._id} article={field} />
-              ))}
+          {data?.length == 0 ? (
+            <p className="text-center text-gray-500 italic mt-6">
+              - No Articles Available -
+            </p>
+          ) : (
+            data?.map((field) => (
+              <ListArticle key={field._id} article={field} />
+            ))
+          )}
         </article>
       </main>
     </Layout>
