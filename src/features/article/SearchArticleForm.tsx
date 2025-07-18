@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react";
+import { Delay } from "@/utils/delay";
 import SearchIcon from "../../assets/images/transparency.png";
 
 const SearchArticleForm = () => {
-  const [value, setValue] = useState<string>("");
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
+  const { debounced } = Delay();
   return (
     <div className="relative">
       <input
         type="text"
         placeholder="Search article...."
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => debounced(e.target.value)}
         className="p-2 rounded-md w-full border bg-white/50 focus:bg-white/10 shadow-2xl"
       />
       <img
