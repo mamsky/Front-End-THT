@@ -14,7 +14,7 @@ const Skeleton = () => {
 const SkeletonArticle = () => {
   return (
     <div className="flex flex-col gap-4">
-      {[...Array(5)].map((_, i) => (
+      {[...Array(10)].map((_, i) => (
         <Skeleton key={i} />
       ))}
     </div>

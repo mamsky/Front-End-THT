@@ -4,6 +4,7 @@ interface props {
   onSearch: (value: string) => void;
   isFetching: boolean;
 }
+
 const SearchArticleForm = ({ onSearch, isFetching }: props) => {
   return (
     <div className="relative">

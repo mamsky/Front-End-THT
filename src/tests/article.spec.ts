@@ -3,6 +3,7 @@ import { keywordNotFound } from "@/utils/keywordFound";
 import { sliceString } from "@/utils/sliceString";
 import { expect, test } from "@playwright/test";
 import { mockArticle } from "./mock/mockArticle";
+import { mockArticleData } from "./mock/mockSearchArticle";
 
 test("has title", async ({ page }) => {
   await page.goto("http://localhost:5173/");
@@ -50,8 +51,8 @@ test("search results for articles about 'Trump' ", async ({ page }) => {
   const input = page.locator('input[id="search"]');
   await input.fill("trump");
 
-  for (let i = 0; i < mockArticle.length; i++) {
-    const article = mockArticle[i];
+  for (let i = 0; i < mockArticleData.length; i++) {
+    const article = mockArticleData[i];
     const articleElement = articleElements.nth(i);
 
     await expect(articleElement.locator("#headline")).toHaveText(

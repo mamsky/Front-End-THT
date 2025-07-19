@@ -9,13 +9,15 @@ export const useFetchArticle = (repository: ArticleRepositoryImpl) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [query, setQuery] = useState<string>("");
   let data: ArticleDTO[] | undefined = [];
-  const debounce = useDebouncedCallback((value) => {
-    setQuery(value);
-  }, 500);
 
-  const params = query
+  const debounce = useDebouncedCallback(
+    (value: string) => setQuery(value),
+    500
+  );
+
+  const queryParams = query
     ? `?q=${query}&fq=timesTag.location:"New York City"&api-key=${apiKey}`
-    : `?q=&fq=timesTag.location:"New York City"&api-key=${apiKey}`;
+    : `?q=war&begin_date=20240122&end_date=20250122&fq=timesTag.location:"New York City"&api-key=${apiKey}`;
 
   const {
     data: queryData,
@@ -24,20 +26,19 @@ export const useFetchArticle = (repository: ArticleRepositoryImpl) => {
     refetch,
   } = useQuery<ArticleDTO[]>({
     queryKey: ["article"],
-    queryFn: () => repository.getArticle(params),
+    queryFn: () => repository.getArticle(queryParams),
   });
 
   useEffect(() => {
-    if (query || query === "") {
+    if (query !== undefined) {
       refetch();
     }
   }, [query, refetch]);
 
   const isScroll = data?.length < 2;
-  data = queryData;
-  if (keywordNotFound.includes(query)) {
-    data = [];
-  }
+
+  data = keywordNotFound.includes(query) ? [] : queryData;
+
   return {
     data,
     isScroll,
