@@ -17,7 +17,7 @@ const ArticlePage = () => {
           <SearchArticleForm onSearch={debounce} isFetching={isFetching} />
         </section>
         <article
-          className={`flex flex-col gap-5 p-2 w-full min-h-[90%] max-h-[95%] ${
+          className={`flex flex-col gap-5 p-2 w-full ${
             isScroll ? "overflow-y-scroll" : ""
           }`}
         >
